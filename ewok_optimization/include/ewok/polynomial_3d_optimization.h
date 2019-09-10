@@ -129,12 +129,13 @@ class Polynomial3DOptimization {
     VectorX traj_segment_times = VectorX(num_segments);
 
     for (int i = 0; i < num_segments; i++) {
-      _Scalar dist = (waypoints[i]
-          - waypoints[i + 1]).norm();
+      _Scalar dist = (waypoints[i] - waypoints[i + 1]).norm();
 
       _Scalar translational_time = dist / limits(0);
-      traj_segment_times[i] = std::max(translational_time, min_segment_time);
-
+      // traj_segment_times[i] = std::max(translational_time, min_segment_time);
+      traj_segment_times[i] = translational_time;
+      if (i == 0 || i == num_segments - 1)
+        traj_segment_times[i] *= 2;
     }
 
     std::cerr << "Trajectory times: " << traj_segment_times.transpose() << std::endl;

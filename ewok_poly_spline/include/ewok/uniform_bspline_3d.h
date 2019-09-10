@@ -210,7 +210,7 @@ class UniformBSpline3D {
   void getVisualizationMarker(visualization_msgs::Marker & traj_marker, const std::string & ns,
                               int id, const Eigen::Vector3d & color, int fixed_id = -_N, int num_points = 0,
                               const Eigen::Vector3d & fixed_color = Eigen::Vector3d(1,1,1), _Scalar ddt = 0.1,
-                              const ros::Duration & lifetime = ros::Duration(0), _Scalar scale = 0.01) {
+                              const ros::Duration & lifetime = ros::Duration(0), _Scalar scale = 0.1) {
     traj_marker.header.frame_id = "world";
     traj_marker.ns = ns;
     traj_marker.id = id;
@@ -318,7 +318,7 @@ class UniformBSpline3D {
 
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
 
- protected:
+ public:
 
   _Scalar dt_;
   UniformBSpline<_N, _Scalar> splines_[3];

@@ -15,7 +15,7 @@ catkin_simple()
 
 cs_add_executable(bspline_lee_position_controller_node src/bspline_lee_position_controller_node.cpp)
 cs_add_executable(trajectory_replanning_example src/trajectory_replanning_example.cpp)
-target_link_libraries(trajectory_replanning_example ${CHOLMOD_LIBRARY} nlopt)
+target_link_libraries(trajectory_replanning_example ${CHOLMOD_LIBRARY} /usr/local/lib/libnlopt.so)
 
 cs_install()
 cs_export()
